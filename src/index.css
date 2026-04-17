@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Tangerine:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --font-quicksand: "Quicksand", sans-serif;
+    --font-tangerine: "Tangerine", sans-serif;
+    --color-bodybg: #ffc2c2;
+    --color-bakerybg1: #FFF4E6;
+    --color-bg-menu: #EBD5B3;
+    --color-menubuttonbg: #D8B27C;
+    --color-menubuttontext: #4E3101;
+    --color-navbar: #4e3101;
+    --color-explore-button-color: #be1e2d;
+    --color-explore-button-Color-OnHover: rgba(190,30,45,0.7);
+}
+
+.bg-bakery {
+  background-image: url('../assets/logos_and_bg/bg.webp');
+}
