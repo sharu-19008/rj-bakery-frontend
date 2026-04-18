@@ -5,12 +5,14 @@ import About from "./pages/About"
 import Menu from "./pages/Menu"
 import Contact from "./pages/Contact"
 import ProductsList from './pages/ProductsList'
+import Page404 from './components/Page404'
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />} >
+            <Route path="*" element={<Page404 />} />
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="menu">

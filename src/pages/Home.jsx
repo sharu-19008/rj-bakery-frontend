@@ -14,7 +14,7 @@ export default function Home() {
     return (
         <section 
             style={bgImage}
-            className="grow flex flex-col items-center justify-around p-4 h-lvh md:h-auto gap-20"
+            className="grow flex flex-col items-center justify-center gap-15 p-4 h-lvh md:h-auto"
         >
             <div className="flex flex-col items-center justify-center gap-5">
                 <motion.img 

@@ -7,6 +7,7 @@ import ProductCard from "./ProductCard";
 
 export default function ItemsList({category, categoryList}) {
 
+    const BASE_URL = 'http://127.0.0.1:8000';
     const categoryName = Object.keys(categoryList).find((key)=>categoryList[key] === category)
 
     const [foodList, setFoodList] = useState([])
@@ -69,7 +70,7 @@ export default function ItemsList({category, categoryList}) {
 
     const foodProductsList = foodList.map((food,index)=>{
         return(
-            <ProductCard key={food.id} food={food} setFoodList={setFoodList} index={index} />
+            <ProductCard key={food.id} food={food} BASE_URL={BASE_URL} setFoodList={setFoodList} index={index} />
         )
     })
 
