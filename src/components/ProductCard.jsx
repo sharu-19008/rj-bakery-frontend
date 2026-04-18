@@ -71,7 +71,7 @@ function ProductCard({food, setFoodList, index}){
             className="h-full flex flex-col outline-1 outline-gray-400 rounded-xl w-70 sm:h-95 md:w-60"
         >
             <img 
-                src={`${food.image}`} 
+                src={food.image} 
                 alt={`Image of ${food.name}`} 
                 loading="lazy" 
                 className="h-44 w-full shrink-0 object-fill rounded-t-xl" 
