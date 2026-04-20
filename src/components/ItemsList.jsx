@@ -74,24 +74,27 @@ export default function ItemsList({category, categoryList}) {
     })
 
     return(
-        <>
+        <div className="flex flex-col gap-7 items-center w-full ">
+            <h1 className=" text-center text-3xl sm:text-4xl md:text-5xl  lg:text-5xl text-navbar font-semibold">{categoryName}</h1>
             {isLoading ? 
                 (
-                    <div className="w-full grid grid-cols-1 place-items-center-safe gap-7 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
-                        {[...Array(12)].map((_, index)=>{
-                            return (
-                                <div key={index} className="h-auto outline-1 outline-gray-300 rounded-xl animate-pulse w-70 md:w-50">
-                                    <div className="h-44 w-full bg-gray-200 rounded-t-xl"></div>
-                                    <div className="h-16 bg-gray-100 rounded-b-xl"></div>
-                                </div>
-                            )
-                        })}
-                    </div>
+                    <>
+                        <h1 className="font-semibold text-xl">Loading... Please Wait...</h1>
+                        <div className="w-full grid grid-cols-1 place-items-center-safe gap-7 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
+                            {[...Array(12)].map((_, index)=>{
+                                return (
+                                    <div key={index} className="h-auto outline-1 outline-gray-300 rounded-xl animate-pulse w-70 md:w-50">
+                                        <div className="h-44 w-full bg-gray-200 rounded-t-xl"></div>
+                                        <div className="h-16 bg-gray-100 rounded-b-xl"></div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </>
                     
                 ) : foodList.length > 0 ? 
                 (
                     <div className="flex flex-col items-center gap-5 w-full ">
-                        <h1 className=" text-center text-3xl sm:text-4xl md:text-5xl  lg:text-5xl text-navbar font-semibold">{categoryName}</h1>
                         <div className=" px-10 w-full flex justify-end">
                             <select id="sort" name="sort" value={sortBy} onChange={(e)=>setSortBy(e.target.value)} className="bg-white p-2" autoComplete="off">
                                 <option value="" disabled>Sort By</option>
@@ -128,6 +131,6 @@ export default function ItemsList({category, categoryList}) {
                     <h1 className="mt-5 p-4 text-xl text-black font-extrabold text-center sm:text-2xl md:text-3xl">Sorry! Our items are still cooking. Please come again later...</h1>
                 )
             }
-        </>
+        </div>
     )
 }
