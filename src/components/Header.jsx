@@ -7,7 +7,6 @@ import { FaStar } from "react-icons/fa";
 
 export default function Header() {
 
-    const BASE_URL = 'http://127.0.0.1:8000';
     
     const [isNavOpen, setIsNavOpen] = useState(false)
     function handleNavOpen(){
@@ -120,7 +119,7 @@ export default function Header() {
                                                     onClick={() => handleProductClick(food)}
                                                 >
                                                     <div className="flex gap-2">
-                                                        <img src={`${BASE_URL}${food.image}`} alt={food.name} className="h-20 w-20 object-cover" />
+                                                        <img src={food.image} alt={food.name} className="h-20 w-20 object-cover" />
                                                         <div>
                                                             <p>{food.name}</p>
                                                             <p className="flex items-center gap-1">{food.average_rating}<FaStar size={13} className="text-yellow-500" /></p>

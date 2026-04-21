@@ -4,6 +4,7 @@ import API from "../services/api"
 import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
 
 import ProductCard from "./ProductCard";
+import { easeOut,motion } from "framer-motion";
 
 export default function ItemsList({category, categoryList}) {
 
@@ -18,6 +19,31 @@ export default function ItemsList({category, categoryList}) {
         }
     )
     const [sortBy, setSortBy] = useState("")
+
+    // const container = {
+    //     hidden: {},
+    //     visible: {
+    //         transition:{
+    //             staggerChildren: 0.08,
+    //         }
+    //     }
+    // }
+
+    // const letter = {
+    //     hidden: { opacity: 0 },
+    //     visible: { opacity: 1 }
+    // }
+
+    // const text = "Loading... Please Wait..."
+
+    // const loadingText = text.split("").map((letter,index)=>{
+    //     return <motion.span 
+    //                 key={index}
+    //                 variants={letter}
+    //             >
+    //                 {letter}
+    //             </motion.span>
+    // })
 
 
     useEffect(()=>{
@@ -79,7 +105,18 @@ export default function ItemsList({category, categoryList}) {
             {isLoading ? 
                 (
                     <>
-                        <h1 className="font-semibold text-xl">Loading... Please Wait...</h1>
+                        <div 
+                            // variants={container}
+                            // initial="hidden"
+                            // animate="visible"
+                            // transition={{
+                            //     repeat: Infinity,
+                            //     repeatDelay: 1.5,
+                            // }}
+                            className="font-semibold text-xl"
+                        >
+                            Loading... Please wait...
+                        </div>
                         <div className="w-full grid grid-cols-1 place-items-center-safe gap-7 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
                             {[...Array(12)].map((_, index)=>{
                                 return (

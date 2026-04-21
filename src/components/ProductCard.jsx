@@ -35,7 +35,7 @@ function ProductCard({food, setFoodList, index}){
     }
 
     const handleStarClick = async (productId, starClicked) => {
-    console.log("Star "+ starClicked + " Clicked for product " + productId)
+    // console.log("Star "+ starClicked + " Clicked for product " + productId)
     const ratedProducts = JSON.parse(sessionStorage.getItem('ratedProducts') || '{}')
     ratedProducts[productId] = true
     sessionStorage.setItem('ratedProducts', JSON.stringify(ratedProducts))
@@ -99,6 +99,8 @@ function ProductCard({food, setFoodList, index}){
                                     onMouseEnter={()=>!productRated && setHoveredStars(prev => ({...prev, [food.id]:starNumber}))}
                                     onMouseLeave={()=>!productRated && setHoveredStars(prev => ({...prev, [food.id]:0}))}
                                     onClick={()=> productRated === false && handleStarClick(food.id,starNumber)}
+                                    onTouchEnd={()=>productRated === false && handleStarClick(food.id, starNumber)}
+                                    style={{touchAction: 'manipulation'}}
                                     />
                                 )
                             })
