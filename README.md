@@ -24,11 +24,8 @@ React frontend for a bakery product catalogue. Browse products by category, sear
   - Click stars to rate
   - Average calculated on backend
   - Stars grey out after rating
-  - Hover preview on desktop
   - SessionStorage prevents re‑rating
 - Loading skeletons
-- Custom mobile hamburger menu
-- Image hover dimming + text overlay
 
 ## Local Setup
 
@@ -66,8 +63,9 @@ Create a `.env` file in the project root:
 # Backend API URL (development)
 VITE_API_URL=http://localhost:8000/api
 
-# For production (uncomment and update with your live backend URL)
+# For production uncomment below line (can also provide your own backend url)
 # VITE_API_URL=https://rj-bakery-backend.onrender.com/api
+ 
 ```
 
 > **Note:** Never commit your `.env` file. The development URL works with the backend running locally on port 8000.
