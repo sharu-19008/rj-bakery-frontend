@@ -1,5 +1,5 @@
 import {useNavigate} from "react-router-dom"
-import {motion} from "framer-motion"
+import { motion } from "framer-motion"
 
 import Breads from "../assets/food_categories/breads_and_buns.webp"
 import Biscuits from "../assets/food_categories/biscuits_and_cookies.webp"
@@ -70,7 +70,7 @@ export default function Menu() {
 
     const categoryElements = categoryObjects.map((category,index)=>{
         return (            
-            <motion.div 
+            <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{
                     opacity: 1,

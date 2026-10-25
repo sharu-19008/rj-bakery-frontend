@@ -1,21 +1,10 @@
 import {useState, memo} from "react"
 import API from "../services/api"
-import {motion} from "framer-motion"
+import { motion } from 'framer-motion';
 import { FaStar, FaRegStar, FaRegSquare, FaCircle,  } from "react-icons/fa";
 import { IoTriangle } from "react-icons/io5";
 
-
-function ProductCard({food, setFoodList, index}){
-    const [hoveredStars, setHoveredStars ] = useState(0)
-    const [productRated, setProductRated] = useState(()=>{
-        const rated = JSON.parse(sessionStorage.getItem('ratedProducts') || '{}') 
-        return Boolean(rated[food.id])
-    })
-
-    const hoveredStarValue = hoveredStars[food.id] || 0
-    const displayRating = hoveredStarValue || Math.floor(food.average_rating)
-
-    const FoodIcon = ({type}) => {
+const FoodIcon = ({type}) => {
         if(type === "non-veg" || type === "egg") {
             return(
                 <div className="relative flex items-center justify-center">
@@ -34,28 +23,39 @@ function ProductCard({food, setFoodList, index}){
         }
     }
 
-    const handleStarClick = async (productId, starClicked) => {
-    // console.log("Star "+ starClicked + " Clicked for product " + productId)
-    const ratedProducts = JSON.parse(sessionStorage.getItem('ratedProducts') || '{}')
-    ratedProducts[productId] = true
-    sessionStorage.setItem('ratedProducts', JSON.stringify(ratedProducts))
-    setProductRated(true)
+function ProductCard({food, setFoodList, index}){
 
-    try {
-        const response = await API.post(`/products/${productId}/rate/`, {rating: starClicked})
-        setFoodList((prevList)=>{
-            return prevList.map((food)=>{
-                return food.id === productId ?
-                {... food,
-                    average_rating: response.data.average_rating,
-                    total_no_of_ratings: response.data.total_no_of_ratings
-                } : food
+    const [hoveredStars, setHoveredStars ] = useState(0)
+    const [productRated, setProductRated] = useState(()=>{
+        const rated = JSON.parse(sessionStorage.getItem('ratedProducts') || '{}') 
+        return Boolean(rated[food.id])
+    })
+
+    const hoveredStarValue = hoveredStars[food.id] || 0
+    const displayRating = hoveredStarValue || Math.floor(food.average_rating)
+
+    const handleStarClick = async (productId, starClicked) => {
+        // console.log("Star "+ starClicked + " Clicked for product " + productId)
+        const ratedProducts = JSON.parse(sessionStorage.getItem('ratedProducts') || '{}')
+        ratedProducts[productId] = true
+        sessionStorage.setItem('ratedProducts', JSON.stringify(ratedProducts))
+        setProductRated(true)
+
+        try {
+            const response = await API.post(`/products/${productId}/rate/`, {rating: starClicked})
+            setFoodList((prevList)=>{
+                return prevList.map((food)=>{
+                    return food.id === productId ?
+                    {... food,
+                        average_rating: response.data.average_rating,
+                        total_no_of_ratings: response.data.total_no_of_ratings
+                    } : food
+                })
             })
-        })
-    } catch (error){
-        console.log("Rating Failed! - ", error)
+        } catch (error){
+            console.log("Rating Failed! - ", error)
+        }
     }
-}
 
     return (
         <motion.div 

@@ -38,6 +38,7 @@ export default function Header() {
                 setSearchResults([])
             }
         },500)
+        return () => clearTimeout(delayDeBounce);
     },[searchTerm])
 
     const fetchSearchResults = async (searchQuery) => {
@@ -155,18 +156,28 @@ export default function Header() {
                     {isNavOpen && 
                         <div className="absolute text-white text-2xl font-semibold left-0 top-12 flex flex-col justify-start items-center bg-navbar opacity-95 w-full h-auto md:hidden">
                             <ul className=" flex flex-col items-center justify-start gap-6 w-full py-5" onClick={handleCloseNav}>
-                                <NavLink to="/" style={({ isActive }) => isActive ? activeStyle : null} className="hover:underline underline-offset-2">
-                                    Home
-                                </NavLink>
-                                <NavLink to="about" style={({ isActive }) => isActive ? activeStyle : null} className="hover:underline underline-offset-2">
-                                    About
-                                </NavLink>
-                                <NavLink to="menu" style={({ isActive }) => isActive ? activeStyle : null} className="hover:underline underline-offset-2">
-                                    Menu
-                                </NavLink>
-                                <NavLink to="contact" style={({ isActive }) => isActive ? activeStyle : null} className="hover:underline underline-offset-2">
-                                    Contact Us
-                                </NavLink>
+                                <li>
+                                    <NavLink to="/" style={({ isActive }) => isActive ? activeStyle : null} className="hover:underline underline-offset-2">
+                                        Home
+                                    </NavLink>
+                                </li>
+
+                                <li>
+                                    <NavLink to="about" style={({ isActive }) => isActive ? activeStyle : null} className="hover:underline underline-offset-2">
+                                        About
+                                    </NavLink>
+                                </li>
+                                    
+                                <li>
+                                    <NavLink to="menu" style={({ isActive }) => isActive ? activeStyle : null} className="hover:underline underline-offset-2">
+                                        Menu
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="contact" style={({ isActive }) => isActive ? activeStyle : null} className="hover:underline underline-offset-2">
+                                        Contact Us
+                                    </NavLink>
+                                </li>
                             </ul>
                         </div>
                     }
@@ -174,18 +185,28 @@ export default function Header() {
                     {/* DESKTOP NAVIGATION */}
                     <div className="hidden md:block">
                         <ul className="flex flex-row gap-12 text-white text-xl font-semibold">
-                            <NavLink to="/" style={({ isActive }) => isActive ? activeStyle : null} className="hover:underline underline-offset-2">
-                                Home
-                            </NavLink>
-                            <NavLink to="about" style={({ isActive }) => isActive ? activeStyle : null} className="hover:underline underline-offset-2">
-                                About
-                            </NavLink>
-                            <NavLink to="menu" style={({ isActive }) => isActive ? activeStyle : null} className="hover:underline underline-offset-2">
-                                Menu
-                            </NavLink>
-                            <NavLink to="contact" style={({ isActive }) => isActive ? activeStyle : null} className="hover:underline underline-offset-2">
-                                Contact Us
-                            </NavLink>
+                            <li>
+                                <NavLink to="/" style={({ isActive }) => isActive ? activeStyle : null} className="hover:underline underline-offset-2">
+                                    Home
+                                </NavLink>
+                            </li>
+
+                            <li>
+                                <NavLink to="about" style={({ isActive }) => isActive ? activeStyle : null} className="hover:underline underline-offset-2">
+                                    About
+                                </NavLink>
+                            </li>
+                                
+                            <li>
+                                <NavLink to="menu" style={({ isActive }) => isActive ? activeStyle : null} className="hover:underline underline-offset-2">
+                                    Menu
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="contact" style={({ isActive }) => isActive ? activeStyle : null} className="hover:underline underline-offset-2">
+                                    Contact Us
+                                </NavLink>
+                            </li>
                         </ul>
                     </div>
                 </div>
